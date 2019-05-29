@@ -1,0 +1,34 @@
+<head>
+	<title>Test</title>
+	<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+</style>
+</head>
+<body>	
+		<form action="{%url 'search'%}" method="get">
+			<input type="text" name="title">
+			<input type="submit" name="">
+	</form>
+	<table>
+		<thead>Similar movies</thead>
+		<tbody border="1px">
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+		</tr>
+		{%for movie in movies%}	
+		<tr>
+			<td>{{movie.id}}</td>
+			<td><a href="{%url 'similar_movie'%}?id={{movie.id}}"/>{{movie.title}}</a></td>
+		</tr>
+		{%endfor%}
+		</tbody>
+	</table>
+</body>
